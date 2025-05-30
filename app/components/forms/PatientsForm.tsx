@@ -8,12 +8,13 @@ import { Form } from "@/components/ui/form";
 import CoustomeFormField from "./CoustomeFormField";
 
 export enum FormFieldType {
- INPUT='input',
- TEXTAREA='textarea',
- PHONE_INPUT='phone-input',
- DATE_PICKER='date-picker',
- SELECT='select',
- SKELETON = 'skeleton',
+  INPUT = "input",
+  TEXTAREA = "textarea",
+  PHONE_INPUT = "phone-input",
+  DATE_PICKER = "date-picker",
+  SELECT = "select",
+  SKELETON = "skeleton",
+  CHECKBOX = "CHECKBOX",
 }
 
 const formSchema = z.object({
@@ -30,24 +31,40 @@ const PatientsForm = () => {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    
     console.log(values);
   }
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <CoustomeFormField
-         control={form.control} 
-         fieldType={FormFieldType.INPUT}
-         name="username"
-         lable='Full-name'
-         placeholder='Enter your full name'
-        //  iconSrc="/assets/icons/users.svg
-        // iconAlt="user"
-        
-         
-         />
-        <Button type="submit">Submit</Button>
+          control={form.control}
+          fieldType={FormFieldType.INPUT}
+          name="username"
+          lable="Full Name"
+          placeholder="Enter your full name"
+          //  iconSrc="/assets/icons/users.svg"
+          //  iconAlt="user"
+        />
+        <CoustomeFormField
+          control={form.control}
+          fieldType={FormFieldType.INPUT}
+          name="email"
+          lable="Email"
+          placeholder="johndoe@gmail.com"
+          //  iconSrc="/assets/icons/users.svg"
+          //  iconAlt="user"
+        />
+
+        <CoustomeFormField
+          control={form.control}
+          fieldType={FormFieldType.PHONE_INPUT}
+          name="phone number"
+          lable="Phone Number"
+          placeholder="Enter your phone number"
+          //  iconSrc="/assets/icons/users.svg"
+          //  iconAlt="user"
+        />
+        {/* <SubmitButton isLoading={} /> */}
       </form>
     </Form>
   );
